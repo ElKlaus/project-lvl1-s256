@@ -1,2 +1,8 @@
 #! /usr/bin/env node
-console.log('Welcome to the Brain Games')
+
+import welcommeFunc from '..';
+
+
+console.log('Welcome to the Brain Games');
+
+welcommeFunc();
