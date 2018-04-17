@@ -1,13 +1,21 @@
 {
-  "name": "brain_games",
-  "version": "1.0.0",
+  "name": "kirov_brain_games",
+  "version": "1.0.1",
   "description": "",
   "main": "src/bin/brain-games.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel-node": "babel-node"
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
-  "author": "",
+   "bin": {
+     "brain-games": "dist/bin/brain-games.js"
+  },
+  "author": "Kirov_SV",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
