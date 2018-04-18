@@ -4,7 +4,5 @@ start:
 	npm run babel-node -- src/bin/brain-games.js
 publish:
 	npm publish
-make:
-	npm run eslint
 lint:
 	npm run eslint
