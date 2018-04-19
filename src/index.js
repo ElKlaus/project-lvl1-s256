@@ -2,9 +2,14 @@ import readlineSync from 'readline-sync';
 
 console.log('Welcome to the Brain Games!');
 
-export const userName = () => readlineSync.question('May I have your name? ');
 
-export const userWelcome = () => console.log(`Hello, ${userName()}!`);
+//= Brain games
+
+const userName = readlineSync.question('May I have your name? ');
+
+export const userWelcome = () => console.log(`Hello, ${userName}!`);
+
+//= end Brain games
 
 
 //= Brain-even
@@ -23,48 +28,59 @@ const userAnswer = () => readlineSync.question('Your answer? ');
 const checkUsrAns = function () {
 
     let quest = questToUser(randomNumber());
-
     let ans = userAnswer();
 
 
-    //console.log(quest, ans);
-
     if(ans !== 'yes' && ans !== 'no') {
-        console.log('Wrong answer');
+        console.log(`${ans} is wrong answer ;(. Correct answers are 'no' or 'yes'.
+Let's try again, ${userName}!`);
 
         return false;
     };
 
     if(!(quest%2) && ans == 'yes') {
 
-      return true;
+        console.log('Correct!');
+
+        return true;
     } else if(quest%2 && ans == 'no') {
 
-      return true;
-    } else if(quest%2 && ans == 'no') {
-      console.log(`'no' is wrong answer ;(. Correct answer was 'yes'.
-      Let's try again, Bill!`);
+        console.log('Correct!');
 
-      return false;
+        return true;
+    } else if(quest%2 && ans == 'yes') {
+
+        console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.
+Let's try again, ${userName}!`);
+
+        return false;
+    } else if(!(quest%2) && ans == 'no') {
+
+        console.log(`'no' is wrong answer ;(. Correct answer was 'yes'.
+Let's try again, ${userName}!`);
+
+        return false;
     };
 
 }
 
 
-const brainEven = function() {
+export const brainEven = function() {
 
     let count = 0;
 
-     while(count < 3) {
+    while(count < 3) {
 
-         if(checkUsrAns()) {
-             count++
-         } else break;
-     }
+        if(checkUsrAns()) {
+            count++
+        } else break;
 
-}
+    }
 
+    if(count === 3) {
+        console.log(`Congratulations, ${userName}!`);
+    }
 
-brainEven();
+};
 
-//questToUser();
+//= end Brain even
