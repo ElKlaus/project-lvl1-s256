@@ -5,7 +5,7 @@ import { userName } from '..';
 
 const randomNumber = () => Math.round(Math.random() * 100);
 
-const questToUser = (arg) => {
+const askToUser = (arg) => {
   console.log(`Question: ${arg}`);
 
   return arg;
@@ -13,8 +13,8 @@ const questToUser = (arg) => {
 
 const userAnswer = () => readlineSync.question('Your answer? ');
 
-const checkUsrAns = () => {
-  const quest = questToUser(randomNumber());
+const checkUserAnswer = () => {
+  const quest = askToUser(randomNumber());
   const ans = userAnswer();
 
 
@@ -51,7 +51,7 @@ const brainEven = () => {
   let count = 0;
 
   while (count < 3) {
-    if (checkUsrAns()) {
+    if (checkUserAnswer()) {
       count += 1;
     } else break;
   }

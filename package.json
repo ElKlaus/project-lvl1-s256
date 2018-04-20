@@ -1,6 +1,6 @@
 {
   "name": "kirov_brain_games",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "",
   "main": "src/bin/brain-games.js",
   "files": [
@@ -15,7 +15,8 @@
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "author": "Kirov_SV",
   "license": "ISC",
