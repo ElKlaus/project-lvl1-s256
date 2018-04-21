@@ -1,32 +1,14 @@
-import readlineSync from 'readline-sync';
-import { userName } from '..';
+import { userName, userWelcome, randomNumber, askToUser, userAnswer, startGame } from '..';
 
-const randomNumber = () => Math.round(Math.random() * 100);
+const actionsArr = ['-', '+', '*'];
 
-const askToUser = () => {
-  const actionsArr = ['-', '+', '*'];
+const randomAction = () => actionsArr[Math.floor(((Math.random() * 3) + 0))];
 
-  const randomAction = () => actionsArr[Math.floor(((Math.random() * 3) + 0))];
-
-  const expressionForAsk = `${randomNumber()} ${randomAction()} ${randomNumber()}`;
-
-  console.log(`Question: ${expressionForAsk}`);
-
-  return expressionForAsk;
-};
-
-const userAnswer = () => readlineSync.question('Your answer? ');
+const expressionForAsk = `${randomNumber()} ${randomAction()} ${randomNumber()}`;
 
 const checkUserAnswer = () => {
-  const quest = askToUser();
+  const quest = askToUser(expressionForAsk);
   const ans = userAnswer();
-
-  //   if (ans !== 'yes' && ans !== 'no') {
-  //     console.log(`${ans} is wrong answer ;(. Correct answers are 'no' or 'yes'.
-  //     Let's try again, ${userName}!`);
-
-  //     return false;
-  //   }
 
   if (eval(quest) == ans) {
     console.log('Correct!');
@@ -34,25 +16,16 @@ const checkUserAnswer = () => {
     return true;
   } else if (eval(quest) !== ans) {
     console.log(`IT is wrong answer ;(.
-    Let's try again, ${userName}!`);
+Let's try again, ${userName}!`);
 
     return false;
   } return true;
 };
 
+const brainCalc = () => startGame(checkUserAnswer, 2);
 
-const brainCalc = () => {
-  let count = 0;
 
-  while (count < 3) {
-    if (checkUserAnswer()) {
-      count += 1;
-    } else break;
-  }
+userWelcome('What is the result of the expression?');
 
-  if (count === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
-};
 
 export default brainCalc;
