@@ -1,17 +1,13 @@
 import readlineSync from 'readline-sync';
 //= Brain games
 
-export const userName = () => {
-  const res = readlineSync.question('May I have your name? ');
+export const userName = readlineSync.question('May I have your name? ');
 
-  return res;
-};
-
-export const userWelcome = (arg) => {
+export const userWelcome = (arg = '') => {
   console.log(`Welcome to the Brain Games!
 ${arg}`);
 
-  console.log(`Hello, ${userName()}!`);
+  console.log(`Hello, ${userName}!`);
 };
 //= end Brain games
 

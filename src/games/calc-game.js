@@ -1,5 +1,7 @@
 import { userName, userWelcome, randomNumber, askToUser, userAnswer, startGame } from '..';
 
+userWelcome('What is the result of the expression?');
+
 const actionsArr = ['-', '+', '*'];
 
 const randomAction = () => actionsArr[Math.floor(((Math.random() * 3) + 0))];
@@ -23,9 +25,5 @@ Let's try again, ${userName}!`);
 };
 
 const brainCalc = () => startGame(checkUserAnswer, 2);
-
-
-userWelcome('What is the result of the expression?');
-
 
 export default brainCalc;
