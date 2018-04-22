@@ -1,26 +1,19 @@
-import { userWelcome, startGame } from '..';
+import { cons } from 'hexlet-pairs';
+import { userWelcome, startGame, randomNumber } from '..';
 
 userWelcome('What is the result of the expression?');
 
 const actionsArr = ['-', '+', '*'];
 
-const randomNumber = () => Math.round(Math.random() * 100);
-
 const randomAction = () => actionsArr[Math.floor(((Math.random() * 3) + 0))];
 
-const expressionForAsk = () => `${randomNumber()} ${randomAction()} ${randomNumber()}`;
+const expressionForAsk = () => {
+  const questExp = `${randomNumber()} ${randomAction()} ${randomNumber()}`;
+  const res = `${eval(questExp)}`;
 
-const rules = (ans, quest) => {
-  let res = '';
-
-  if (eval(quest) == ans) {
-    res = 'right';
-  } else res = 'wrong';
-
-  return res;
+  return cons(questExp, res);
 };
 
-
-const brainCalc = () => startGame(expressionForAsk, rules, 2);
+const brainCalc = () => startGame(expressionForAsk);
 
 export default brainCalc;

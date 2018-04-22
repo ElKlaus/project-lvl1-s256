@@ -1,51 +1,49 @@
 import readlineSync from 'readline-sync';
-
+import { car, cdr } from 'hexlet-pairs';
 
 export const userWelcome = (arg = '') => {
   console.log(`Welcome to the Brain Games!
 ${arg}`);
 };
 
-export const askToUser = (arg) => {
-  console.log(`Question: ${arg}`);
-
-  return arg;
-};
-
 export const userAnswer = () => readlineSync.question('Your answer? ');
 
-export const startGame = (expressinForAsk, rules, levelsCount) => {
+export const startGame = (dataFromGame) => {
+  const userName = readlineSync.question('May I have your name? ');
+
+
   let count = 0;
 
-  const userName = readlineSync.question('May I have your name? ');
 
   console.log(`Hello, ${userName}!`);
 
-
   const checkUserAnswer = () => {
-    const quest = askToUser(expressinForAsk());
+    const pairFromGame = dataFromGame();
+    const epressionForAnswer = car(pairFromGame);
+    const rightAnswer = cdr(pairFromGame);
+
+    console.log(`Question: ${epressionForAnswer}`);
+
     const ans = userAnswer();
 
-    switch (rules(ans, quest)) {
-      case 'right':
-        console.log('Correct!');
-        return true;
-      case 'wrong':
-        console.log(`${ans} is wrong answer ;(.
-Let's try again, ${userName}!`);
-        return false;
-      default:
-        return true;
-    }
+
+    if (rightAnswer === ans) {
+      console.log('Correct!');
+      return true;
+    } console.log(`${ans} is wrong answer ;(. Right answer is ${rightAnswer}\nLet's try again, ${userName}!`);
+
+    return false;
   };
 
-  while (count < levelsCount) {
+  while (count < 3) {
     if (checkUserAnswer()) {
       count += 1;
     } else break;
   }
 
-  if (count === levelsCount) {
+  if (count === 3) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
+
+export const randomNumber = () => Math.round(Math.random() * 100);

@@ -1,22 +1,22 @@
-import { userWelcome, startGame } from '..';
+import { cons } from 'hexlet-pairs';
+import { userWelcome, startGame, randomNumber } from '..';
 
 userWelcome('Answer "yes" if number even otherwise answer "no".');
 
-const randomNumber = () => Math.round(Math.random() * 100);
-
-const rules = (ans, quest) => {
+const expressionForAsk = () => {
+  const num = randomNumber();
+  const questExp = `${num}`;
   let res = '';
 
-  if (!(quest % 2) && ans === 'yes') {
-    res = 'right';
-  } else if (quest % 2 && ans === 'no') {
-    res = 'right';
-  } else res = 'wrong';
+  if (!(num % 2)) {
+    res = 'yes';
+  } else if (num % 2) {
+    res = 'no';
+  }
 
-  return res;
+  return cons(questExp, res);
 };
 
-
-const brainEven = () => startGame(randomNumber, rules, 2);
+const brainEven = () => startGame(expressionForAsk);
 
 export default brainEven;
