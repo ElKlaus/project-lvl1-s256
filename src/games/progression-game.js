@@ -21,7 +21,8 @@ const newProgression = () => {
 
 const expressionForAsk = () => {
   const questExp = newProgression();
-  const rightAnswer = `${questExp.splice(2, 1, '..')}`;
+  const missedIndex = randomNumber(1, 10);
+  const rightAnswer = `${questExp.splice(missedIndex, 1, '..')}`;
 
   return cons(questExp, rightAnswer);
 };
