@@ -3,9 +3,6 @@ import { userWelcome, startGame, randomNumber } from '..';
 
 userWelcome('What is the result of the expression?');
 
-
-// const actionsArr = ['-', '+', '*'];
-
 const randomAction = () => randomNumber(1, 3);
 
 const expressionForAsk = () => {
@@ -13,8 +10,6 @@ const expressionForAsk = () => {
   const num2 = randomNumber(1, 100);
   let res = '';
   let questExp = '';
-  // const res = `${eval(questExp)}`;
-
 
   switch (randomAction()) {
     case 1:
