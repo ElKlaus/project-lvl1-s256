@@ -3,13 +3,36 @@ import { userWelcome, startGame, randomNumber } from '..';
 
 userWelcome('What is the result of the expression?');
 
-const actionsArr = ['-', '+', '*'];
 
-const randomAction = () => actionsArr[Math.floor(((Math.random() * 3) + 0))];
+// const actionsArr = ['-', '+', '*'];
+
+const randomAction = () => randomNumber(1, 3);
 
 const expressionForAsk = () => {
-  const questExp = `${randomNumber()} ${randomAction()} ${randomNumber()}`;
-  const res = `${eval(questExp)}`;
+  const num1 = randomNumber(1, 100);
+  const num2 = randomNumber(1, 100);
+  let res = '';
+  let questExp = '';
+  // const res = `${eval(questExp)}`;
+
+
+  switch (randomAction()) {
+    case 1:
+      res = `${num1 - num2}`;
+      questExp = `${num1} - ${num2}`;
+      break;
+    case 2:
+      res = `${num1 * num2}`;
+      questExp = `${num1} * ${num2}`;
+      break;
+    case 3:
+      res = `${num1 + num2}`;
+      questExp = `${num1} + ${num2}`;
+      break;
+    default:
+      break;
+  }
+
 
   return cons(questExp, res);
 };

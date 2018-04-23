@@ -6,14 +6,13 @@ export const userWelcome = (arg = '') => {
 ${arg}`);
 };
 
+export const randomNumber = (from, to) => Math.floor(((Math.random() * to) + from));
+
 export const userAnswer = () => readlineSync.question('Your answer? ');
 
 export const startGame = (dataFromGame) => {
   const userName = readlineSync.question('May I have your name? ');
-
-
   let count = 0;
-
 
   console.log(`Hello, ${userName}!`);
 
@@ -46,4 +45,3 @@ export const startGame = (dataFromGame) => {
   }
 };
 
-export const randomNumber = () => Math.round(Math.random() * 100);
