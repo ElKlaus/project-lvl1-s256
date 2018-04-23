@@ -3,29 +3,41 @@ import { userWelcome, startGame, randomNumber } from '..';
 
 userWelcome('Balance the given number.');
 
+const argToArr = (arg) => {
+  let count = 0;
+  const res = [];
+
+  while (count < arg.length) {
+    res[count] = Number(arg[count]);
+    count += 1;
+  }
+
+  return res;
+};
+
+const checkBalance = arg => !(((Math.max(...arg) - Math.min(...arg)) <= 1));
+
+const toBalance = (arg) => {
+  const lastIndex = arg.length - 1;
+  const res = arg;
+
+  while (checkBalance(res)) {
+    res.sort();
+    res[lastIndex] -= 1;
+    res[0] += 1;
+    res.sort();
+  }
+
+  console.log(arg);
+  return res;
+};
+
 const expressionForAsk = () => {
   const questExp = `${randomNumber(100, 10000)}`;
-  const res = `${questExp}`;
+  const numbArr = argToArr(questExp);
+  const rightAnswer = toBalance(numbArr).join('');
 
-  const numbFollow = (arg) => {
-    let count = 0;
-
-    while (count < arg.length) {
-      console.log(arg[count]);
-
-      count += 1;
-    }
-  };
-
-  // const balanceFunc = () => {
-  //   const expLength = questExp.length;
-
-  //   return console.log(expLength);
-  // };
-
-  numbFollow(questExp);
-
-  return cons(questExp, res);
+  return cons(questExp, rightAnswer);
 };
 
 const brainBalance = () => startGame(expressionForAsk);
