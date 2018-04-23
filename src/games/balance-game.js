@@ -28,7 +28,6 @@ const toBalance = (arg) => {
     res.sort();
   }
 
-  console.log(arg);
   return res;
 };
 
