@@ -4,19 +4,20 @@ import { userWelcome, startGame, randomNumber } from '..';
 userWelcome('What number is missing in this progression?');
 
 const newProgression = () => {
-  let count = 1;
   const res = [];
   const step = randomNumber(1, 100);
 
   res[0] = randomNumber(1, 100);
 
-  while (count < 10) {
+  const iterArr = (arg, count) => {
+    if (count === arg) return res;
+
     res.push(res[count - 1] + step);
 
-    count += 1;
-  }
+    return iterArr(arg, count + 1);
+  };
 
-  return res;
+  return iterArr(10, 1);
 };
 
 const expressionForAsk = () => {
