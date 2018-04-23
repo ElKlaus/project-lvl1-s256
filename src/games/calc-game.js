@@ -8,28 +8,28 @@ const randomAction = () => randomNumber(1, 3);
 const expressionForAsk = () => {
   const num1 = randomNumber(1, 100);
   const num2 = randomNumber(1, 100);
-  let res = '';
-  let questExp = '';
+  let rightAnswer = '';
+  let question = '';
 
   switch (randomAction()) {
     case 1:
-      res = `${num1 - num2}`;
-      questExp = `${num1} - ${num2}`;
+      rightAnswer = `${num1 - num2}`;
+      question = `${num1} - ${num2}`;
       break;
     case 2:
-      res = `${num1 * num2}`;
-      questExp = `${num1} * ${num2}`;
+      rightAnswer = `${num1 * num2}`;
+      question = `${num1} * ${num2}`;
       break;
     case 3:
-      res = `${num1 + num2}`;
-      questExp = `${num1} + ${num2}`;
+      rightAnswer = `${num1 + num2}`;
+      question = `${num1} + ${num2}`;
       break;
     default:
       break;
   }
 
 
-  return cons(questExp, res);
+  return cons(question, rightAnswer);
 };
 
 const brainCalc = () => startGame(expressionForAsk);
