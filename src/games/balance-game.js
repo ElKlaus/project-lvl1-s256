@@ -3,7 +3,7 @@ import { userWelcome, startGame, randomNumber } from '..';
 
 userWelcome('Balance the given number.');
 
-const argToArr = (arg) => {
+const numToArr = (arg) => {
   let count = 0;
   const res = [];
 
@@ -15,7 +15,11 @@ const argToArr = (arg) => {
   return res;
 };
 
-const checkBalance = arg => !(((Math.max(...arg) - Math.min(...arg)) <= 1));
+const checkBalance = (arg) => {
+  if ((Math.max(...arg) - Math.min(...arg)) <= 1) {
+    return false;
+  } return true;
+};
 
 const toBalance = (arg) => {
   const lastIndex = arg.length - 1;
@@ -33,7 +37,7 @@ const toBalance = (arg) => {
 
 const expressionForAsk = () => {
   const questExp = `${randomNumber(100, 10000)}`;
-  const numbArr = argToArr(questExp);
+  const numbArr = numToArr(questExp);
   const rightAnswer = toBalance(numbArr).join('');
 
   return cons(questExp, rightAnswer);
